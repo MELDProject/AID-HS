@@ -31,7 +31,7 @@ def run_hippunfold_parallel(subjects, bids_dir=None, hippo_dir=None, num_procs=1
             subject_id = subject_bids_id
         else:
             subject_id = subject.convert_bids_id()
-        # subject_id = subject_id.split('sub-')[-1]
+        subject_id = subject_id.split('sub-')[-1]
 
         #check if outputs already exists
         files_surf = glob(f'{hippo_s}/surf/*_den-0p5mm_label-hipp_*.surf.gii')
