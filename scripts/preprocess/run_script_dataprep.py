@@ -73,7 +73,7 @@ def bidsify_results(subject, file, modality, verbose=False):
                 if proc.returncode==0:
                     return True
                 else:
-                    print(get_m(f'COMMAND failing : {command} with error {stderr}', subject_id, 'ERROR'))
+                    print(get_m(f'COMMAND failing : {command} with error {stderr}', subject.id, 'ERROR'))
                     return False
             else:
                 print(get_m(f'File type not recognized', subject.id, 'ERROR')) 
@@ -91,7 +91,6 @@ def extract_surface_features(subject, output_dir=None, verbose=False):
         subject_id = subject.bids_id
     else:
         subject_id = subject.convert_bids_id()
-    input_dir = subject.bids_dir
 
     #create new directory for subject if does not exist
     if output_dir != None:
