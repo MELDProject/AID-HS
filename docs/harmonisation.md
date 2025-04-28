@@ -31,13 +31,20 @@ Once you have done the process once, you can follow the [general guidelines to p
 Open a terminal and `cd` to where you extracted the release zip.
 
 ::::{tab-set}
-:::{tab-item} Docker
-:sync: docker
-
+:::{tab-item} Docker Linux
+:sync: Docker Linux
 ```bash
 DOCKER_USER="$(id -u):$(id -g)" docker compose run aidhs python scripts/new_patient_pipeline/new_patient_pipeline.py -harmo_code <harmo_code> -ids <subjects_list> -demos <demographic_file> --harmo_only
 ```
 :::
+
+:::{tab-item} Docker Windows
+:sync: Docker Windows
+```bash
+docker compose run aidhs python scripts/new_patient_pipeline/new_patient_pipeline.py -harmo_code <harmo_code> -ids <subjects_list> -demos <demographic_file> --harmo_only
+```
+:::
+
 :::{tab-item} Singularity
 :sync: Singularity
 

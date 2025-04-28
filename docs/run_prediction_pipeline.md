@@ -20,13 +20,22 @@ Ensure "noHarmo" is provided as an harmonisation code for that subject in the `d
 Then run:
 
 ::::{tab-set}
-:::{tab-item} Docker
-:sync: docker
+:::{tab-item} Docker Linux
+:sync: Docker Linux
 
 ```bash
 DOCKER_USER="$(id -u):$(id -g)" docker compose run aidhs python scripts/new_patient_pipeline/new_patient_pipeline.py -id <subject_id> -demos <demographic_file>
 ```
 :::
+
+:::{tab-item} Docker Windows
+:sync: Docker Windows
+
+```bash
+docker compose run aidhs python scripts/new_patient_pipeline/new_patient_pipeline.py -id <subject_id> -demos <demographic_file>
+```
+:::
+
 :::{tab-item} Singularity
 :sync: Singularity
 
@@ -57,15 +66,21 @@ Ensure you the same harmonisation code is provided for that subject in the `demo
 Then run: 
 
 ::::{tab-set}
-:::{tab-item} Docker
-:sync: docker
 
-
+:::{tab-item} Docker Linux
+:sync: Docker Linux
 ```bash
 DOCKER_USER="$(id -u):$(id -g)" docker compose run aidhs python scripts/new_patient_pipeline/new_patient_pipeline.py -id <subject_id> -demos <demographic_file> -harmo_code <harmonisation_code>
 ```
-
 :::
+
+:::{tab-item} Docker Windows
+:sync: Docker Windows
+```bash
+docker compose run aidhs python scripts/new_patient_pipeline/new_patient_pipeline.py -id <subject_id> -demos <demographic_file> -harmo_code <harmonisation_code>
+```
+:::
+
 :::{tab-item} Singularity
 :sync: Singularity
 
@@ -113,14 +128,22 @@ NOTES:
 To run the whole prediction pipeline on subject 'test001' without harmonising the data:
 
 ::::{tab-set}
-:::{tab-item} Docker
-:sync: docker
+:::{tab-item} Docker Linux
+:sync: Docker Linux
 
 ```bash
 DOCKER_USER="$(id -u):$(id -g)" docker compose run aidhs python scripts/new_patient_pipeline/new_patient_pipeline.py -id sub-test001
 ```
-
 :::
+
+:::{tab-item} Docker Windows
+:sync: Docker Windows
+
+```bash
+docker compose run aidhs python scripts/new_patient_pipeline/new_patient_pipeline.py -id sub-test001
+```
+:::
+
 :::{tab-item} Singularity
 :sync: Singularity
 
@@ -142,14 +165,22 @@ python scripts/new_patient_pipeline/new_patient_pipeline.py -id sub-test001
 To run the whole prediction pipeline on subject 'test001' using harmonisation code H1:
 
 ::::{tab-set}
-:::{tab-item} Docker
-:sync: docker
+:::{tab-item} Docker Linux
+:sync: Docker Linux
 
 ```bash
 DOCKER_USER="$(id -u):$(id -g)" docker compose run aidhs python scripts/new_patient_pipeline/new_patient_pipeline.py -id sub-test001 -harmo_code H1
 ```
-
 :::
+
+:::{tab-item} Docker Windows
+:sync: Docker Windows
+
+```bash
+docker compose run aidhs python scripts/new_patient_pipeline/new_patient_pipeline.py -id sub-test001 -harmo_code H1
+```
+:::
+
 :::{tab-item} Singularity
 :sync: Singularity
 
@@ -170,14 +201,20 @@ python scripts/new_patient_pipeline/new_patient_pipeline.py -id sub-test001 -har
 To run the whole prediction pipeline on multiples subjects with parallelisation:
 
 ::::{tab-set}
-:::{tab-item} Docker
-:sync: docker
-
+:::{tab-item} Docker Linux
+:sync: Docker linux
 ```bash
 DOCKER_USER="$(id -u):$(id -g)" docker compose run aidhs python scripts/new_patient_pipeline/new_patient_pipeline.py -ids list_subjects.txt --parallelise
 ```
-
 :::
+
+:::{tab-item} Docker Windows
+:sync: Docker Windows
+```bash
+docker compose run aidhs python scripts/new_patient_pipeline/new_patient_pipeline.py -ids list_subjects.txt --parallelise
+```
+:::
+
 :::{tab-item} Singularity
 :sync: Singularity
 

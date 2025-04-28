@@ -60,6 +60,17 @@ For example, if you wanted the folder to be on a mounted drive such as "`/mnt/da
       - /mnt/datadrive/aidhs-data:/data
 ```
 
+:::{admonition} Windows
+:class: tip
+
+On windows, if you're using absolute paths, use forward slashes and quotes:
+```
+    volumes:
+      - "C:/Users/John/Desktop/meld-data:/data"
+```
+:::
+
+
 5. **WARNING:** If you do not have GPU on your computer (e.g. Mac laptop) you will need to open the compose.yml file and remove the last 6th lines of the text (everything that includes `deploy` and below).\
 Your file should look like that: 
 ```
@@ -72,15 +83,28 @@ services:
     user: $DOCKER_USER
 ```
 
-6. **WARNING** If you are running docker with Docker Desktop, you will need to ensure that the memory usage allowed by docker is to the maximum, as  Docker Desktop halves the memory usage by default. For that you can go in the Docker Desktop settings and change the memory limit (more help in this [post](https://forums.docker.com/t/how-to-increase-memory-size-that-is-available-for-a-docker-container/78483))
+6. **WARNING** If you are running docker with Docker Desktop, you will need to ensure that the memory usage allowed by docker is to the maximum, as  Docker Desktop halves the memory usage by default. For that you can go in the Docker Desktop settings and change the memory limit (more help in this [post](https://stackoverflow.com/questions/43460770/docker-windows-container-memory-limit))
 
 ## Download AID-HS docker & Verify installation
 The line below will download AID-HS and then run a test to verify that everything is installed and set up properly. It may take up to an 1h to download the docker image and then takes approximately 1 minute to run the test.
 
+::::{tab-set}
+
+:::{tab-item} Linux
+:sync: linux
 ```bash
 DOCKER_USER="$(id -u):$(id -g)" docker compose run aidhs pytest
 ```
+:::
 
+:::{tab-item} Windows
+:sync: windows
+```bash
+docker compose run aidhs pytest
+```
+:::
+
+::::
 
 ### Errors
 
@@ -88,9 +112,23 @@ If you run into errors during the downloading of the AID-HS docker, contact us b
 
 If the installation seems to have worked but you are running into errors during the test you can re-run the test above by changing the last line of the command by the command below to save the terminal outputs in a txt file. Please send `pytest_errors.log` to us so we can work with you to solve any problems. [How best to reach us.](#contact)
 
+::::{tab-set}
+
+:::{tab-item} Linux
+:sync: linux
 ```bash
 DOCKER_USER="$(id -u):$(id -g)" docker compose run aidhs pytest -s | tee pytest_errors.log
 ```
+:::
+
+:::{tab-item} Windows
+:sync: windows
+```bash
+docker compose run aidhs pytest -s | tee pytest_errors.log
+```
+:::
+
+::::
 
 You will find `pytest_errors.log` in the folder where you launched the command. 
 
