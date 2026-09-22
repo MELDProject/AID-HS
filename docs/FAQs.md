@@ -176,7 +176,9 @@ If you want to update the predictions with the new registration for patients you
 
 1) Create a list of ids of patients you want to rerun: e.g. `list_subjects_rerun_v1.1.0.txt`
 
-2) Then run the pipeline again. It will recreate the PDF report for your patient.
+2) Delete the previous harmonisation parameters and harmonised data found in <aidhs_data_folder>/output/preprocessed_surf_data/AIDHS_<site_code>. And rerun the harmonisation process again. 
+
+2) Then run the prediction pipeline again. It will recreate the PDF report for your patient.
 
 **WARNING** This will overwrite the data for that patient and the patient report in `output/predictions_reports`
 
